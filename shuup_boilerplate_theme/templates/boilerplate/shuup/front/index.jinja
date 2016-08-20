@@ -1,0 +1,20 @@
+{# This is the only required file to override #}
+{% extends "shuup/front/base.jinja" %}
+{% block content_title %}{% endblock %}
+
+{% block extra_main_class %}index{% endblock %}
+
+{% block content %}
+    {% placeholder frontpage_carousel %}{% endplaceholder %}
+    {% if xtheme.should_show_boilerplate() %}
+        <h1 class="page-header">Showing boilerplate text</h1>
+        {% set text = xtheme.get("boilerplate_text", None) %}
+        {% set date = xtheme.get("boilerplate_date", None) %}
+
+        {% if text %}<p>This is your text: <b>{{ text  }}</b></p>{% endif %}
+        {% if date %}<p>This is your date: <b>{{ date|date  }}</b></p>{% endif %}
+    {% endif %}
+    {% placeholder "front_content" %}
+        <h1>Welcome to boilering</h1>
+    {% endplaceholder %}
+{% endblock %}

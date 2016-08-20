@@ -1,0 +1,11 @@
+<div class="shop-info-plugin">
+    <h3>{{ title }}</h3>
+    {% if show_logo %}<img src="{{ shop.logo|thumbnail(size=(50, 50)) }}">{% endif %}
+    {% if show_name %}<p>{{ shop.public_name }}</p>{% endif %}
+    {% if show_contact_address and shop.contact_address %}
+        {%- set address = shop.contact_address -%}
+        <p>{{ address.street }} {{ address.city }} {{ address.postal_code }}</p>
+        <p>{{ address.country.name }}</p>
+        <p>{{ address.phone }} / {{ address.email }}</p>
+    {% endif %}
+</div>
