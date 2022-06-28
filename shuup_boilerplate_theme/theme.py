@@ -6,7 +6,7 @@
 # This source code is licensed under the AGPLv3 license found in the
 # LICENSE file in the root directory of this source tree.
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from shuup.themes.classic_gray.theme import ClassicGrayTheme
 
@@ -17,6 +17,7 @@ class ShuupBoilerplateTheme(ClassicGrayTheme):
 
     This is a simple theme that shows the inheritance from one of the Shuup base themes
     """
+
     identifier = "shuup_boilerplate_theme"  # internal identifier for theme, used system wide to differentiate themes
     name = _("Shuup Boilerplate Theme")  # Template name, shown in admin
     author = "Shoop Commerce Ltd"  # The author of the theme, shown in admin
@@ -29,9 +30,7 @@ class ShuupBoilerplateTheme(ClassicGrayTheme):
 
     Boilerplate offers one plugin that shows store information for visiting customer.
     """
-    plugins = [
-        "shuup_boilerplate_theme.plugins:StoreInfoPlugin"
-    ]
+    plugins = ["shuup_boilerplate_theme.plugins:StoreInfoPlugin"]
 
     """
     Configurable fields
@@ -45,10 +44,22 @@ class ShuupBoilerplateTheme(ClassicGrayTheme):
     Example usage of this can be found below.
     """
     fields = [
-        ("show_boilerplate", forms.BooleanField(
-            required=False, initial=True, label=_("Show the boilerplate information on frontpage"))),
-        ("boilerplate_text", forms.CharField(required=False, label=_("Boilerplate text"))),
-        ("boilerplate_date", forms.DateField(required=False, label=_("Boilerplate date")))
+        (
+            "show_boilerplate",
+            forms.BooleanField(
+                required=False,
+                initial=True,
+                label=_("Show the boilerplate information on frontpage"),
+            ),
+        ),
+        (
+            "boilerplate_text",
+            forms.CharField(required=False, label=_("Boilerplate text")),
+        ),
+        (
+            "boilerplate_date",
+            forms.DateField(required=False, label=_("Boilerplate date")),
+        ),
     ]
 
     def should_show_boilerplate(self):
